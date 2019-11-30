@@ -9,11 +9,11 @@ import {Recipe} from '../recipes.model';
 export class RecipeListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
   recipes: Recipe[] = [
-    new Recipe('Test Ricipe',
+    new Recipe('Test Recipe',
       'This is a simply a test',
       'https://www.gotemplates.store/wp-content/uploads/Rn1Ke6/recipe-cards.jpg'),
-    new Recipe('Test Ricipe',
-      'This is a simply a test',
+    new Recipe('Another Test Recipe',
+      'This is a test',
       'https://www.gotemplates.store/wp-content/uploads/Rn1Ke6/recipe-cards.jpg')
   ];
 
