@@ -8,7 +8,7 @@
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  background: #3258c0;
+  background: #111185;
   animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 @keyframes lds-circle {
