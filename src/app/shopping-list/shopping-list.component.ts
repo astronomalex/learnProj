@@ -27,7 +27,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
           this.ingredients = ingredients;
         }
       );
-    this.loggingService.printLog('Hello from ShoppingListComponent ngOnInit!')
+    this.loggingService.printLog('Hello from ShoppingListComponent ngOnInit!');
   }
 
   ngOnDestroy(): void {
