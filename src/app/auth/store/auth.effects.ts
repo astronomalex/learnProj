@@ -42,7 +42,7 @@ export class AuthEffects {
             });
         }),
         catchError(errorRes => {
-          let errorMessage = 'An unknown error occured!';
+          let errorMessage = 'An unknown error occurred!';
           if (!errorRes.error || !errorRes.error.error) {
             return of(new AuthActions.LoginFail(errorMessage));
           }
