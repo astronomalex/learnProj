@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
-import {BehaviorSubject, throwError} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
+import {throwError} from 'rxjs';
 import {User} from './user.model';
-import {Router} from '@angular/router';
-import { environment} from '../../environments/environment';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
 import {Store} from '@ngrx/store';
@@ -25,8 +22,6 @@ export class AuthService {
   private tokenExpirationTimer: any;
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
     private store: Store<fromApp.AppState>
   ) {}
 
