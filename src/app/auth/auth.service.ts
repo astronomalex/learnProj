@@ -30,51 +30,10 @@ export class AuthService {
     private store: Store<fromApp.AppState>
   ) {}
 
-  autoLogin() {
-    const userData: {
-      email: string;
-      id: string;
-      _token: string;
-      _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if (!userData) {
-      return;
-    }
-
-    const loadedUser = new User(
-      userData.email,
-      userData.id,
-      userData._token,
-      new Date(userData._tokenExpirationDate)
-    );
-    if (loadedUser.token) {
-      this.store.dispatch(new AuthActions.AuthenticateSuccess( {
-        email: loadedUser.email,
-        userId: loadedUser.id,
-        token: loadedUser.token,
-        expirationDate: new Date(userData._tokenExpirationDate)
-      }));
-      // this.user.next(loadedUser);
-      const expirationDuration =
-        new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
-      this.autoLogout(expirationDuration);
-    }
-  }
-
-  logout() {
-    // this.user.next(null);
-    this.store.dispatch(new AuthActions.Logout());
-    localStorage.removeItem('userData');
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-    this.tokenExpirationTimer = null;
-  }
-
   autoLogout(expirationDuration: number) {
     console.log(expirationDuration);
     this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
+      // this.logout();
     }, expirationDuration);
   }
 
