@@ -4,7 +4,7 @@ import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {AuthResponseData} from '../auth.service';
 import {HttpClient} from '@angular/common/http';
-import {of, throwError} from 'rxjs';
+import {of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../user.model';
@@ -25,12 +25,12 @@ const handleAuthentication = (
 ) => {
   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
   const user = new User(email, userId, token, expirationDate);
-  localStorage.setItem('userdata', JSON.stringify(user));
+  localStorage.setItem('userData', JSON.stringify(user));
   return new AuthActions.AuthenticateSuccess(
     {
-      email: email,
-      userId: userId,
-      token: token,
+      email,
+      userId,
+      token,
       expirationDate
     });
 };
@@ -166,7 +166,7 @@ export class AuthEffects {
     tap(() => {
       localStorage.removeItem('userData');
     })
-  )
+  );
 
   constructor(
     private actions$: Actions,
